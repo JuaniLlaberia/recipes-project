@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Recipes from "./components/Recipes";
+import RecipeDetails from "./components/RecipeDetails";
+import { useState } from "react";
+import './assets/styles.css'
 
 function App() {
+  const [query, setQuery] = useState('');
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<Home setQuery={setQuery}/>}/>
+        <Route path="/recipes" element={<Recipes query={query}/>} />
+        <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
+      </Routes>
     </div>
   );
 }
