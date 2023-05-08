@@ -1,4 +1,4 @@
-import { faArrowLeft, faCheck, faMinus, faPlus, faHeart, faCircleMinus, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faCheck, faMinus, faPlus, faHeart, faCircleMinus, faCirclePlus, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faUser, faHeart as fullHeart } from '@fortawesome/free-regular-svg-icons';
 import React, { useEffect, useState } from 'react'
@@ -10,10 +10,13 @@ const RecipeDetails = () => {
     const {favoriteRecipes, addFav, removeFav} = useFavContext();
     const [recipeInfo, setRecipeInfo] = useState({});
     const [servings, setServings] = useState(4);
+    //We get the element ID from the url using this custom hook
     let { recipeId } = useParams();
 
+    //Checks if the loaded recipe is on the favorite array or not
     const isRecipesFav = favoriteRecipes.some(recipe => recipe.recipeID === recipeId);
 
+    //Fetch all details about selected recipe based on its ID
     useEffect(() => {
         const fetchRecipeInfo = async () => {
             try {
@@ -69,6 +72,7 @@ const RecipeDetails = () => {
         </ul>
       </section>
       <Link to='/recipes' className='back-home'><FontAwesomeIcon icon={faArrowLeft}/>Back</Link>
+      <Link to='/' className='back-main'><FontAwesomeIcon size='1x' icon={faHouse}/></Link>
     </main>
   )
 }

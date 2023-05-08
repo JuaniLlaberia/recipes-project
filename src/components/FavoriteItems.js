@@ -1,4 +1,4 @@
-import { faHeartBroken } from '@fortawesome/free-solid-svg-icons'
+import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import { useFavContext } from '../context/favoriteContext'
@@ -14,7 +14,7 @@ const FavoriteItems = ({srcImg, name, id}) => {
             <h6 className='recipe-title-fav'>{name}</h6>
         </div>
       </Link>
-      <button className='un-fav-item' onClick={() => removeFav(id)}><FontAwesomeIcon icon={faHeartBroken} size='2x'/></button>
+      <button className='un-fav-item' onClick={() => removeFav(id)}><FontAwesomeIcon icon={faTrashCan} size='2x'/></button>
     </li>
   )
 }

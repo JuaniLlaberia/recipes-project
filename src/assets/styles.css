@@ -15,6 +15,7 @@
     gap: 10px;
     font-family: 'Karla', sans-serif;
     position: relative;
+    transition: all .8s ease;
 }
 
 .error-card {
@@ -165,12 +166,28 @@
 .home-title {
     font-size: 3.5rem;
     color: white;
+
+    transition: all .6s ease;
+}
+
+.home-title-unloaded {
+    transform: translateY(45%);
+    font-size: 3.5rem;
+    color: white;
 }
 
 .home-sec-title {
     font-size: 1.25rem;
     font-weight: 300;
     color: rgba(47, 43, 43, 0.695);
+    transition: all .6s ease;
+}
+
+.home-sec-title-unloaded {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: rgba(47, 43, 43, 0.695);
+    transform: translateX(65%);
 }
 
 .search-form {
@@ -179,6 +196,16 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
+    transition: all .6s ease;
+}
+
+.search-form-unloaded {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    transform: translateY(75%);
 }
 
 .search-bar {
@@ -338,6 +365,20 @@
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+.back-main {
+    color: rgb(24, 23, 23);
+    position: absolute;
+    top: 2.5%;
+    right: 2.5%;
+    transition: all 0.3s ease;
+}
+
+.back-main:hover {
+    color: rgb(46, 45, 45);
+    cursor: pointer;
+    transform: scale(0.95);
 }
 
 .back-home:hover {
@@ -501,6 +542,11 @@
         align-items: center;
     }
 
+    .home-title-unloaded {
+        font-size: 2rem;
+        transform: translateY(45%);
+    }
+
     .home-sec-title {
         font-size: 1rem;
     }
@@ -632,3 +678,35 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+
+  .recipes-container::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .recipes-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .recipes-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+    transition: all .5s ease;
+  }
+
+  .recipes-container::-webkit-scrollbar-thumb:hover {
+    background: rgb(255, 173, 85);;
+  }
+
+.create-by {
+    font-family: 'Karla', sans-serif;
+    position: fixed;
+    bottom: 1%;
+    left: 1%;
+    color: rgba(66, 61, 61, 0.604);
+}
+
+.create-by a{
+    color: rgba(66, 61, 61, 0.604);
+    text-decoration: underline;
+}

@@ -14,6 +14,7 @@ function App() {
         <Route path="/recipes" element={<Recipes query={query}/>} />
         <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
       </Routes>
+      <p className='create-by'>Created by <a href='https://www.linkedin.com/in/juan-ignacio-llaberia-241b351b3/'>Juan I. Llaberia</a></p>
     </div>
   );
 }

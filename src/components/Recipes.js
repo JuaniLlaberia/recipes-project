@@ -9,6 +9,7 @@ const Recipes = ({query}) => {
     const [isLoading, setIsLoading] = useState(false);
     let searchQuery = query;
 
+    //When the query is empty we get the query stored in the local storage to prevent undefiened searches
     useEffect(() => {
       if(searchQuery === '') {
           const storedQuery = JSON.parse(localStorage.getItem('RECIPE_QUERY'))
@@ -16,6 +17,7 @@ const Recipes = ({query}) => {
       }
     }, []);
 
+    //Fetch recipes based on the global search query value and store the result in the state
     useEffect(() => {
       setIsLoading(true);
         const fetchRecipes = async () => {
@@ -31,6 +33,7 @@ const Recipes = ({query}) => {
         fetchRecipes();
     }, [query]);
 
+    //Render each recipe as a list element to display
     const recipesToDisplay = recipes.map(recipe => {
       return <RecipeItem key={recipe.id} title={recipe.title} imgSrc={recipe.image_url} id={recipe.id}/>
     })
