@@ -1,14 +1,18 @@
-import { faArrowLeft, faCheck, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faCheck, faMinus, faPlus, faHeart, faCircleMinus, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faUser } from '@fortawesome/free-regular-svg-icons';
+import { faClock, faUser, faHeart as fullHeart } from '@fortawesome/free-regular-svg-icons';
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import fracty from "fracty";
+import { useFavContext } from '../context/favoriteContext';
 
 const RecipeDetails = () => {
+    const {favoriteRecipes, addFav, removeFav} = useFavContext();
     const [recipeInfo, setRecipeInfo] = useState({});
     const [servings, setServings] = useState(4);
     let { recipeId } = useParams();
+
+    const isRecipesFav = favoriteRecipes.some(recipe => recipe.recipeID === recipeId);
 
     useEffect(() => {
         const fetchRecipeInfo = async () => {
@@ -49,9 +53,12 @@ const RecipeDetails = () => {
           <div className='change-portions'>
               <p><FontAwesomeIcon icon={faUser} style={{color:'rgb(255, 157, 52)'}}/> Servings {servings}</p>
               <div className='btns-portions'>
-                <button onClick={handleClickMinus}><FontAwesomeIcon icon={faMinus}/></button>
-                <button onClick={handleClickPlus}><FontAwesomeIcon icon={faPlus}/></button>
+                <button onClick={handleClickMinus}><FontAwesomeIcon icon={faCircleMinus} size='2x'/></button>
+                <button onClick={handleClickPlus}><FontAwesomeIcon icon={faCirclePlus} size='2x'/></button>
               </div>
+          </div>
+          <div className='add-fav'>
+            <p className='save-text'>Save Recipe</p><FontAwesomeIcon icon={isRecipesFav ? faHeart : fullHeart} onClick={!isRecipesFav ? () => addFav(recipeInfo.title, recipeInfo.image_url, recipeId) : () => removeFav(recipeId)} className='heart-fav-save' size='2x'/>
           </div>
         </div>
       </section>
@@ -61,7 +68,7 @@ const RecipeDetails = () => {
           {ingredientsList}
         </ul>
       </section>
-      <Link to='/recipes' className='back-home'><FontAwesomeIcon icon={faArrowLeft}/>Back Home</Link>
+      <Link to='/recipes' className='back-home'><FontAwesomeIcon icon={faArrowLeft}/>Back</Link>
     </main>
   )
 }

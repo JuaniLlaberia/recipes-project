@@ -10,7 +10,6 @@ const RecipeItem = ({imgSrc, title, id}) => {
         </div>
         <div className='recipe-btns'>
             <Link to={`/recipes/${id}`} className='recipe-link'>More Info</Link>
-            {/* <button className='recipe-save'>Save</button> */}
         </div>
     </li>
   )

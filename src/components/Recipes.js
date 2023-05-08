@@ -42,7 +42,7 @@ const Recipes = ({query}) => {
         <ul className='recipes-container'>
           {recipes.length === 0 ? <div>No Results Found</div> : recipesToDisplay}
         </ul>}
-        <Link to='/' className='back-home'><FontAwesomeIcon icon={faArrowLeft}/>Back Home</Link>
+        <Link to='/' className='back-home'><FontAwesomeIcon icon={faArrowLeft}/>Back</Link>
     </main>
   )
 }
